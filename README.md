@@ -13,7 +13,7 @@ To analyze the 2013 NYC Taxi trip and fare datasets and identify opportunities f
 ## Content
 
 - [NYC Trip Data Profile](https://whoamimi.github.io/nyc-trip-data/templates/trip_data.html)
-- [NYC Trip Fare Data Profile](https://whoamimi.github.io/nyc-trip-data/templates/trip_are.html)
+- [NYC Trip Fare Data Profile](https://whoamimi.github.io/nyc-trip-data/templates/trip_fare.html)
 - [Data Quality Checks](https://github.com/whoamimi/nyc-trip-data/tree/main/src/checks)
 - `/data/output/reports/*.json`: Example Quality reports for `trip_data_1.csv` samples.
 
