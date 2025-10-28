@@ -10,6 +10,14 @@
 
 - expectation_type: ExpectColumnValuesToNotBeNull
   kwargs:
+    column: pickup_datetime
+  description: "Pickup datetime should never be null."
+  meta:
+    quality_score: 3
+    label: "missing_pickup_datetime"
+
+- expectation_type: ExpectColumnValuesToNotBeNull
+  kwargs:
     column: hack_license
   description: "Hack license should never be null."
   meta:
