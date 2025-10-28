@@ -1,0 +1,196 @@
+# trip_fare_schema_raw_validation.yml
+
+- expectation_type: ExpectColumnValuesToNotBeNull
+  kwargs:
+    column: medallion
+  description: "Each record must reference a valid taxi medallion."
+  meta:
+    quality_score: 3
+    label: "missing_taxi_medallion"
+
+- expectation_type: ExpectColumnValuesToNotBeNull
+  kwargs:
+    column: hack_license
+  description: "Each trip must have an associated driver hack license."
+  meta:
+    quality_score: 3
+    label: "missing_driver_license"
+
+- expectation_type: ExpectColumnValuesToBeInSet
+  kwargs:
+    column: vendor_id
+    value_set: ["CMT", "VTS", "DDS", "NYC"]
+  description: "Vendor ID should match known vendor codes."
+  meta:
+    quality_score: 2
+    label: "vendor_id_valid_values"
+
+- expectation_type: ExpectColumnValuesToMatchStrftimeFormat
+  kwargs:
+    column: pickup_datetime
+    strftime_format: "%Y-%m-%d %H:%M:%S"
+  description: "Pickup timestamp should be parseable with second-level precision."
+  meta:
+    quality_score: 3
+    label: "pickup_datetime_format_check"
+
+- expectation_type: ExpectColumnValuesToBeInSet
+  kwargs:
+    column: payment_type
+    value_set: ["Cash", "Credit card", "No charge", "Dispute", "Unknown"]
+  description: "Payment type should belong to known categories."
+  meta:
+    quality_score: 3
+    label: "payment_type_category_check"
+
+- expectation_type: ExpectColumnValuesToBeOfType
+  kwargs:
+    column: fare_amount
+    type_: "float64"
+  description: "Base fare must be stored as a floating-point value."
+  meta:
+    quality_score: 2
+    label: "fare_amount_type_float"
+
+- expectation_type: ExpectColumnValuesToBeBetween
+  kwargs:
+    column: fare_amount
+    min_value: 0
+    strict_min: false
+  description: "Base fare cannot be negative."
+  meta:
+    quality_score: 3
+    label: "fare_amount_non_negative"
+
+- expectation_type: ExpectColumnValuesToBeOfType
+  kwargs:
+    column: surcharge
+    type_: "float64"
+  description: "Surcharge must be numeric."
+  meta:
+    quality_score: 2
+    label: "surcharge_type_float"
+
+- expectation_type: ExpectColumnValuesToBeBetween
+  kwargs:
+    column: surcharge
+    min_value: 0
+    strict_min: false
+  description: "Surcharge cannot be negative."
+  meta:
+    quality_score: 3
+    label: "surcharge_non_negative"
+
+- expectation_type: ExpectColumnValuesToBeOfType
+  kwargs:
+    column: mta_tax
+    type_: "float64"
+  description: "MTA tax must be numeric."
+  meta:
+    quality_score: 2
+    label: "mta_tax_type_float"
+
+- expectation_type: ExpectColumnValuesToBeBetween
+  kwargs:
+    column: mta_tax
+    min_value: 0
+    strict_min: false
+  description: "MTA tax cannot be negative."
+  meta:
+    quality_score: 3
+    label: "mta_tax_non_negative"
+
+- expectation_type: ExpectColumnValuesToBeOfType
+  kwargs:
+    column: tip_amount
+    type_: "float64"
+  description: "Tip amount must be numeric."
+  meta:
+    quality_score: 2
+    label: "tip_amount_type_float"
+
+- expectation_type: ExpectColumnValuesToBeBetween
+  kwargs:
+    column: tip_amount
+    min_value: 0
+    strict_min: false
+  description: "Tip amount should be non-negative."
+  meta:
+    quality_score: 3
+    label: "tip_amount_non_negative"
+
+- expectation_type: ExpectColumnValuesToBeOfType
+  kwargs:
+    column: tolls_amount
+    type_: "float64"
+  description: "Tolls amount must be numeric."
+  meta:
+    quality_score: 2
+    label: "tolls_amount_type_float"
+
+- expectation_type: ExpectColumnValuesToBeBetween
+  kwargs:
+    column: tolls_amount
+    min_value: 0
+    strict_min: false
+  description: "Tolls amount cannot be negative."
+  meta:
+    quality_score: 3
+    label: "tolls_amount_non_negative"
+
+- expectation_type: ExpectColumnValuesToBeOfType
+  kwargs:
+    column: total_amount
+    type_: "float64"
+  description: "Total fare amount must be numeric."
+  meta:
+    quality_score: 2
+    label: "total_amount_type_float"
+
+- expectation_type: ExpectColumnValuesToBeBetween
+  kwargs:
+    column: total_amount
+    min_value: 0
+    strict_min: false
+  description: "Total fare must be non-negative."
+  meta:
+    quality_score: 3
+    label: "total_amount_non_negative"
+
+- expectation_type: ExpectColumnValuesToBeBetween
+  kwargs:
+    column: total_amount
+    min_value: 0
+    max_value: 1000
+  description: "Trip totals should be within a realistic range (0–1000 USD)."
+  meta:
+    quality_score: 2
+    label: "total_amount_reasonable_range"
+
+- expectation_type: ExpectColumnPairValuesToBeEqual
+  kwargs:
+    column_A: total_amount
+    column_B: fare_amount_plus_components
+  description: "Total fare should approximately equal the sum of fare, surcharge, tax, tip, and tolls."
+  meta:
+    quality_score: 3
+    label: "total_amount_component_consistency"
+
+- expectation_type: ExpectTableColumnsToMatchOrderedList
+  kwargs:
+    column_list:
+      - medallion
+      - hack_license
+      - vendor_id
+      - pickup_datetime
+      - payment_type
+      - fare_amount
+      - surcharge
+      - mta_tax
+      - tip_amount
+      - tolls_amount
+      - total_amount
+  description: "Table must contain all expected columns in proper order."
+  meta:
+    quality_score: 3
+    label: "table_schema_column_order"

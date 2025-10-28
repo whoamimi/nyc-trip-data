@@ -1,0 +1,193 @@
+# trip_data_stat_validation.yml
+
+- expectation_type: ExpectColumnValuesToBeBetween
+  kwargs:
+    column: rate_code
+    min_value: 1
+    max_value: 6
+  description: "Rate code should fall within the expected NYC TLC range (1–6)."
+  meta:
+    quality_score: 3
+    label: "rate_code_reasonable_range"
+
+- expectation_type: ExpectColumnValuesToBeBetween
+  kwargs:
+    column: passenger_count
+    min_value: 1
+    max_value: 6
+  description: "Passenger count should be realistic (1–6); exclude extreme values up to 255."
+  meta:
+    quality_score: 3
+    label: "passenger_count_reasonable_range"
+
+- expectation_type: ExpectColumnValuesToBeBetween
+  kwargs:
+    column: trip_time_in_secs
+    min_value: 30
+    max_value: 10800
+  description: "Trip duration should be between 30 seconds and 3 hours; longer trips are likely data errors."
+  meta:
+    quality_score: 3
+    label: "trip_time_duration_range"
+
+- expectation_type: ExpectColumnValuesToBeBetween
+  kwargs:
+    column: trip_distance
+    min_value: 0.1
+    max_value: 50
+  description: "Trip distance (in miles) should be positive and under 50 miles for typical NYC trips."
+  meta:
+    quality_score: 3
+    label: "trip_distance_reasonable_range"
+
+- expectation_type: ExpectColumnPairValuesAToBeGreaterThanB
+  kwargs:
+    column_A: dropoff_datetime
+    column_B: pickup_datetime
+  description: "Pickup time should precede dropoff time (dropoff > pickup)."
+  meta:
+    quality_score: 3
+    label: "pickup_before_dropoff_check"
+
+- expectation_type: ExpectColumnValuesToMatchStrftimeFormat
+  kwargs:
+    column: pickup_datetime
+    strftime_format: "%Y-%m-%d %H:%M:%S"
+  description: "Pickup datetime should conform to standard timestamp format with second precision."
+  meta:
+    quality_score: 2
+    label: "pickup_datetime_format"
+
+- expectation_type: ExpectColumnValuesToMatchStrftimeFormat
+  kwargs:
+    column: dropoff_datetime
+    strftime_format: "%Y-%m-%d %H:%M:%S"
+  description: "Dropoff datetime should conform to standard timestamp format."
+  meta:
+    quality_score: 2
+    label: "dropoff_datetime_format"
+
+- expectation_type: ExpectColumnValuesToBeBetween
+  kwargs:
+    column: pickup_longitude
+    min_value: -74.3
+    max_value: -73.6
+    mostly: 0.98
+  description: "Pickup longitude should fall within the approximate NYC bounds (allowing small GPS noise)."
+  meta:
+    quality_score: 3
+    label: "pickup_longitude_geo_range"
+
+- expectation_type: ExpectColumnValuesToBeBetween
+  kwargs:
+    column: pickup_latitude
+    min_value: 40.4
+    max_value: 41.1
+    mostly: 0.98
+  description: "Pickup latitude should fall within the NYC region range."
+  meta:
+    quality_score: 3
+    label: "pickup_latitude_geo_range"
+
+- expectation_type: ExpectColumnValuesToBeBetween
+  kwargs:
+    column: dropoff_longitude
+    min_value: -74.3
+    max_value: -73.6
+    mostly: 0.98
+  description: "Dropoff longitude should be within NYC boundaries."
+  meta:
+    quality_score: 3
+    label: "dropoff_longitude_geo_range"
+
+- expectation_type: ExpectColumnValuesToBeBetween
+  kwargs:
+    column: dropoff_latitude
+    min_value: 40.4
+    max_value: 41.1
+    mostly: 0.98
+  description: "Dropoff latitude should be within NYC boundaries."
+  meta:
+    quality_score: 3
+    label: "dropoff_latitude_geo_range"
+
+- expectation_type: ExpectColumnValuesToNotBeNull
+  kwargs:
+    column: pickup_datetime
+  description: "Pickup datetime should never be null."
+  meta:
+    quality_score: 3
+    label: "missing_pickup_datetime"
+
+- expectation_type: ExpectColumnValuesToNotBeNull
+  kwargs:
+    column: dropoff_datetime
+  description: "Dropoff datetime should never be null."
+  meta:
+    quality_score: 3
+    label: "missing_dropoff_datetime"
+
+- expectation_type: ExpectColumnValuesToNotBeNull
+  kwargs:
+    column: pickup_longitude
+  description: "Pickup longitude must be present."
+  meta:
+    quality_score: 2
+    label: "missing_pickup_longitude"
+
+- expectation_type: ExpectColumnValuesToNotBeNull
+  kwargs:
+    column: dropoff_longitude
+  description: "Dropoff longitude must be present."
+  meta:
+    quality_score: 2
+    label: "missing_dropoff_longitude"
+
+- expectation_type: ExpectColumnValuesToBeOfType
+  kwargs:
+    column: trip_distance
+    type_: "float64"
+  description: "Trip distance column should be stored as floating-point numeric type."
+  meta:
+    quality_score: 2
+    label: "trip_distance_type_float"
+
+- expectation_type: ExpectColumnValuesToBeOfType
+  kwargs:
+    column: passenger_count
+    type_: "int64"
+  description: "Passenger count column should be stored as integer."
+  meta:
+    quality_score: 2
+    label: "passenger_count_type_int"
+
+- expectation_type: ExpectColumnValuesToBeBetween
+  kwargs:
+    column: trip_time_in_secs
+    min_value: 0
+    strict_min: false
+  description: "Trip duration should be non-negative."
+  meta:
+    quality_score: 3
+    label: "trip_duration_non_negative"
+
+- expectation_type: ExpectColumnValuesToBeBetween
+  kwargs:
+    column: trip_distance
+    min_value: 0
+    strict_min: false
+  description: "Trip distance should be non-negative."
+  meta:
+    quality_score: 3
+    label: "trip_distance_non_negative"
+
+- expectation_type: ExpectColumnQuantileValuesToBeBetween
+  kwargs:
+    column: trip_time_in_secs
+    quantile_ranges:
+      quantiles: [0.25, 0.5, 0.75]
+      value_ranges: [[300, 500], [500, 600], [800, 1000]]
+  description: "Trip duration quartiles should align with observed 25th, 50th, and 75th percentiles from the statistical summary."
+  meta:
+    quality_score: 2
+    label: "trip_time_distribution_check"

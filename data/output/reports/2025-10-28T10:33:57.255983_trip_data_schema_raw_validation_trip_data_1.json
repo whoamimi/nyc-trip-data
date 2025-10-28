@@ -1,0 +1,2024 @@
+{
+  "success": false,
+  "results": [
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_values_to_not_be_null",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "medallion"
+        },
+        "meta": {
+          "quality_score": 3,
+          "label": "missing_taxi_uid"
+        },
+        "description": "Medallion should never be null.",
+        "severity": "critical"
+      },
+      "result": {
+        "element_count": 14776615,
+        "unexpected_count": 0,
+        "unexpected_percent": 0.0,
+        "partial_unexpected_list": [],
+        "partial_unexpected_counts": [],
+        "partial_unexpected_index_list": []
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_values_to_not_be_null",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "hack_license"
+        },
+        "meta": {
+          "quality_score": 3,
+          "label": "missing_taxi_driver_uid"
+        },
+        "description": "Hack license should never be null.",
+        "severity": "critical"
+      },
+      "result": {
+        "element_count": 14776615,
+        "unexpected_count": 0,
+        "unexpected_percent": 0.0,
+        "partial_unexpected_list": [],
+        "partial_unexpected_counts": [],
+        "partial_unexpected_index_list": []
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_unique_value_count_to_be_between",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "vendor_id",
+          "min_value": 1,
+          "max_value": 2
+        },
+        "meta": {
+          "quality_score": 1,
+          "label": "vendor_id_unique_value_range"
+        },
+        "description": "Vendor ID should only have 1\u20132 distinct values.",
+        "severity": "critical"
+      },
+      "result": {
+        "observed_value": 2
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": false,
+      "expectation_config": {
+        "type": "expect_column_values_to_be_in_type_list",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "vendor_id",
+          "type_list": [
+            "object",
+            "string"
+          ]
+        },
+        "meta": {
+          "quality_score": 1,
+          "label": "vendor_id_type_check"
+        },
+        "description": "Vendor ID should be a short string code (e.g., CMT, VTS).",
+        "severity": "critical"
+      },
+      "result": {
+        "element_count": 14776615,
+        "unexpected_count": 14776615,
+        "unexpected_percent": 100.0,
+        "partial_unexpected_list": [
+          "CMT",
+          "CMT",
+          "CMT",
+          "CMT",
+          "CMT",
+          "CMT",
+          "CMT",
+          "CMT",
+          "CMT",
+          "CMT",
+          "CMT",
+          "CMT",
+          "CMT",
+          "CMT",
+          "CMT",
+          "CMT",
+          "CMT",
+          "CMT",
+          "CMT",
+          "CMT"
+        ],
+        "missing_count": 0,
+        "missing_percent": 0.0,
+        "unexpected_percent_total": 100.0,
+        "unexpected_percent_nonmissing": 100.0,
+        "partial_unexpected_counts": [
+          {
+            "value": "CMT",
+            "count": 20
+          }
+        ],
+        "partial_unexpected_index_list": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ]
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": false,
+      "expectation_config": {
+        "type": "expect_column_values_to_be_in_set",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "rate_code",
+          "value_set": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "meta": {
+          "quality_score": 2,
+          "label": "rate_code_allowed_values"
+        },
+        "description": "Allowed NYC rate codes (1\u20136).",
+        "severity": "critical"
+      },
+      "result": {
+        "element_count": 14776615,
+        "unexpected_count": 698,
+        "unexpected_percent": 0.004723679949704313,
+        "partial_unexpected_list": [
+          8,
+          8,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "missing_count": 0,
+        "missing_percent": 0.0,
+        "unexpected_percent_total": 0.004723679949704313,
+        "unexpected_percent_nonmissing": 0.004723679949704313,
+        "partial_unexpected_counts": [
+          {
+            "value": 0,
+            "count": 18
+          },
+          {
+            "value": 8,
+            "count": 2
+          }
+        ],
+        "partial_unexpected_index_list": [
+          515396,
+          730094,
+          2194817,
+          2199644,
+          2212380,
+          2219683,
+          2235123,
+          2254791,
+          2267795,
+          2283257,
+          2300684,
+          2304019,
+          2310397,
+          2328873,
+          2384222,
+          2398011,
+          2403086,
+          2430644,
+          2432308,
+          2469764
+        ]
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": false,
+      "expectation_config": {
+        "type": "expect_column_values_to_be_between",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "rate_code",
+          "min_value": 1.0,
+          "max_value": 99.0
+        },
+        "meta": {
+          "quality_score": 1,
+          "label": "rate_code_value_range_guardrail"
+        },
+        "description": "Defensive guardrail for unexpected new codes.",
+        "severity": "critical"
+      },
+      "result": {
+        "element_count": 14776615,
+        "unexpected_count": 682,
+        "unexpected_percent": 0.004615400753149486,
+        "partial_unexpected_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "missing_count": 0,
+        "missing_percent": 0.0,
+        "unexpected_percent_total": 0.004615400753149486,
+        "unexpected_percent_nonmissing": 0.004615400753149486,
+        "partial_unexpected_counts": [
+          {
+            "value": 0,
+            "count": 20
+          }
+        ],
+        "partial_unexpected_index_list": [
+          2194817,
+          2199644,
+          2212380,
+          2219683,
+          2235123,
+          2254791,
+          2267795,
+          2283257,
+          2300684,
+          2304019,
+          2310397,
+          2328873,
+          2384222,
+          2398011,
+          2403086,
+          2430644,
+          2432308,
+          2469764,
+          2474963,
+          2483751
+        ]
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_values_to_be_of_type",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "rate_code",
+          "type_": "int64"
+        },
+        "meta": {
+          "quality_score": 1,
+          "label": "rate_code_type_int"
+        },
+        "description": "Rate code stored as integer.",
+        "severity": "critical"
+      },
+      "result": {
+        "observed_value": "int64"
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_values_to_be_in_set",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "store_and_fwd_flag",
+          "value_set": [
+            "Y",
+            "N"
+          ]
+        },
+        "meta": {
+          "quality_score": 2,
+          "label": "store_and_fwd_flag_binary_check"
+        },
+        "description": "Must be 'Y' or 'N'.",
+        "severity": "critical"
+      },
+      "result": {
+        "element_count": 14776615,
+        "unexpected_count": 0,
+        "unexpected_percent": 0.0,
+        "partial_unexpected_list": [],
+        "missing_count": 7326207,
+        "missing_percent": 49.57973798464669,
+        "unexpected_percent_total": 0.0,
+        "unexpected_percent_nonmissing": 0.0,
+        "partial_unexpected_counts": [],
+        "partial_unexpected_index_list": []
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_values_to_match_strftime_format",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "pickup_datetime",
+          "strftime_format": "%Y-%m-%d %H:%M:%S"
+        },
+        "meta": {
+          "quality_score": 3,
+          "label": "pickup_datetime_format_check"
+        },
+        "description": "Pickup timestamp must be parseable (UTC/local as ingested) with second precision.",
+        "severity": "critical"
+      },
+      "result": {
+        "element_count": 14776615,
+        "unexpected_count": 0,
+        "unexpected_percent": 0.0,
+        "partial_unexpected_list": [],
+        "missing_count": 0,
+        "missing_percent": 0.0,
+        "unexpected_percent_total": 0.0,
+        "unexpected_percent_nonmissing": 0.0,
+        "partial_unexpected_counts": [],
+        "partial_unexpected_index_list": []
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_values_to_not_be_null",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "pickup_datetime"
+        },
+        "meta": {
+          "quality_score": 3,
+          "label": "missing_pickup_datetime"
+        },
+        "description": "Pickup timestamp should be present.",
+        "severity": "critical"
+      },
+      "result": {
+        "element_count": 14776615,
+        "unexpected_count": 0,
+        "unexpected_percent": 0.0,
+        "partial_unexpected_list": [],
+        "partial_unexpected_counts": [],
+        "partial_unexpected_index_list": []
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_values_to_match_strftime_format",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "dropoff_datetime",
+          "strftime_format": "%Y-%m-%d %H:%M:%S"
+        },
+        "meta": {
+          "quality_score": 3,
+          "label": "dropoff_datetime_format_check"
+        },
+        "description": "Dropoff timestamp must be parseable with second precision.",
+        "severity": "critical"
+      },
+      "result": {
+        "element_count": 14776615,
+        "unexpected_count": 0,
+        "unexpected_percent": 0.0,
+        "partial_unexpected_list": [],
+        "missing_count": 0,
+        "missing_percent": 0.0,
+        "unexpected_percent_total": 0.0,
+        "unexpected_percent_nonmissing": 0.0,
+        "partial_unexpected_counts": [],
+        "partial_unexpected_index_list": []
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_values_to_not_be_null",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "dropoff_datetime"
+        },
+        "meta": {
+          "quality_score": 3,
+          "label": "missing_dropoff_datetime"
+        },
+        "description": "Dropoff timestamp should be present.",
+        "severity": "critical"
+      },
+      "result": {
+        "element_count": 14776615,
+        "unexpected_count": 0,
+        "unexpected_percent": 0.0,
+        "partial_unexpected_list": [],
+        "partial_unexpected_counts": [],
+        "partial_unexpected_index_list": []
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": false,
+      "expectation_config": {
+        "type": "expect_column_pair_values_a_to_be_greater_than_b",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column_A": "pickup_datetime",
+          "column_B": "dropoff_datetime"
+        },
+        "meta": {
+          "quality_score": 3,
+          "label": "pickup_before_dropoff_check"
+        },
+        "description": "Pickup must precede dropoff.",
+        "severity": "critical"
+      },
+      "result": {
+        "element_count": 14776615,
+        "unexpected_count": 14776567,
+        "unexpected_percent": 99.99967516241034,
+        "partial_unexpected_list": [
+          [
+            "2013-01-01 15:11:48",
+            "2013-01-01 15:18:10"
+          ],
+          [
+            "2013-01-06 00:18:35",
+            "2013-01-06 00:22:54"
+          ],
+          [
+            "2013-01-05 18:49:41",
+            "2013-01-05 18:54:23"
+          ],
+          [
+            "2013-01-07 23:54:15",
+            "2013-01-07 23:58:20"
+          ],
+          [
+            "2013-01-07 23:25:03",
+            "2013-01-07 23:34:24"
+          ],
+          [
+            "2013-01-07 15:27:48",
+            "2013-01-07 15:38:37"
+          ],
+          [
+            "2013-01-08 11:01:15",
+            "2013-01-08 11:08:14"
+          ],
+          [
+            "2013-01-07 12:39:18",
+            "2013-01-07 13:10:56"
+          ],
+          [
+            "2013-01-07 18:15:47",
+            "2013-01-07 18:20:47"
+          ],
+          [
+            "2013-01-07 15:33:28",
+            "2013-01-07 15:49:26"
+          ],
+          [
+            "2013-01-08 13:11:52",
+            "2013-01-08 13:19:50"
+          ],
+          [
+            "2013-01-08 09:50:05",
+            "2013-01-08 10:02:54"
+          ],
+          [
+            "2013-01-10 12:07:08",
+            "2013-01-10 12:17:29"
+          ],
+          [
+            "2013-01-07 07:35:47",
+            "2013-01-07 07:46:00"
+          ],
+          [
+            "2013-01-10 15:42:29",
+            "2013-01-10 16:04:02"
+          ],
+          [
+            "2013-01-10 14:27:28",
+            "2013-01-10 14:45:21"
+          ],
+          [
+            "2013-01-07 22:09:59",
+            "2013-01-07 22:19:50"
+          ],
+          [
+            "2013-01-07 17:18:16",
+            "2013-01-07 17:20:55"
+          ],
+          [
+            "2013-01-07 06:08:51",
+            "2013-01-07 06:13:14"
+          ],
+          [
+            "2013-01-07 22:25:46",
+            "2013-01-07 22:36:56"
+          ]
+        ],
+        "missing_count": 0,
+        "missing_percent": 0.0,
+        "unexpected_percent_total": 99.99967516241034,
+        "unexpected_percent_nonmissing": 99.99967516241034,
+        "partial_unexpected_counts": [
+          {
+            "value": [
+              "2013-01-01 15:11:48",
+              "2013-01-01 15:18:10"
+            ],
+            "count": 1
+          },
+          {
+            "value": [
+              "2013-01-05 18:49:41",
+              "2013-01-05 18:54:23"
+            ],
+            "count": 1
+          },
+          {
+            "value": [
+              "2013-01-06 00:18:35",
+              "2013-01-06 00:22:54"
+            ],
+            "count": 1
+          },
+          {
+            "value": [
+              "2013-01-07 06:08:51",
+              "2013-01-07 06:13:14"
+            ],
+            "count": 1
+          },
+          {
+            "value": [
+              "2013-01-07 07:35:47",
+              "2013-01-07 07:46:00"
+            ],
+            "count": 1
+          },
+          {
+            "value": [
+              "2013-01-07 12:39:18",
+              "2013-01-07 13:10:56"
+            ],
+            "count": 1
+          },
+          {
+            "value": [
+              "2013-01-07 15:27:48",
+              "2013-01-07 15:38:37"
+            ],
+            "count": 1
+          },
+          {
+            "value": [
+              "2013-01-07 15:33:28",
+              "2013-01-07 15:49:26"
+            ],
+            "count": 1
+          },
+          {
+            "value": [
+              "2013-01-07 17:18:16",
+              "2013-01-07 17:20:55"
+            ],
+            "count": 1
+          },
+          {
+            "value": [
+              "2013-01-07 18:15:47",
+              "2013-01-07 18:20:47"
+            ],
+            "count": 1
+          },
+          {
+            "value": [
+              "2013-01-07 22:09:59",
+              "2013-01-07 22:19:50"
+            ],
+            "count": 1
+          },
+          {
+            "value": [
+              "2013-01-07 22:25:46",
+              "2013-01-07 22:36:56"
+            ],
+            "count": 1
+          },
+          {
+            "value": [
+              "2013-01-07 23:25:03",
+              "2013-01-07 23:34:24"
+            ],
+            "count": 1
+          },
+          {
+            "value": [
+              "2013-01-07 23:54:15",
+              "2013-01-07 23:58:20"
+            ],
+            "count": 1
+          },
+          {
+            "value": [
+              "2013-01-08 09:50:05",
+              "2013-01-08 10:02:54"
+            ],
+            "count": 1
+          },
+          {
+            "value": [
+              "2013-01-08 11:01:15",
+              "2013-01-08 11:08:14"
+            ],
+            "count": 1
+          },
+          {
+            "value": [
+              "2013-01-08 13:11:52",
+              "2013-01-08 13:19:50"
+            ],
+            "count": 1
+          },
+          {
+            "value": [
+              "2013-01-10 12:07:08",
+              "2013-01-10 12:17:29"
+            ],
+            "count": 1
+          },
+          {
+            "value": [
+              "2013-01-10 14:27:28",
+              "2013-01-10 14:45:21"
+            ],
+            "count": 1
+          },
+          {
+            "value": [
+              "2013-01-10 15:42:29",
+              "2013-01-10 16:04:02"
+            ],
+            "count": 1
+          }
+        ],
+        "partial_unexpected_index_list": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ]
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": false,
+      "expectation_config": {
+        "type": "expect_column_values_to_be_between",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "passenger_count",
+          "min_value": 0.0,
+          "max_value": 6.0
+        },
+        "meta": {
+          "quality_score": 2,
+          "label": "passenger_count_range_check"
+        },
+        "description": "NYC taxis seat up to 6; some records may have 0 for no-passenger repositioning.",
+        "severity": "critical"
+      },
+      "result": {
+        "element_count": 14776615,
+        "unexpected_count": 3,
+        "unexpected_percent": 2.0302349354029998e-05,
+        "partial_unexpected_list": [
+          208,
+          9,
+          255
+        ],
+        "missing_count": 0,
+        "missing_percent": 0.0,
+        "unexpected_percent_total": 2.0302349354029998e-05,
+        "unexpected_percent_nonmissing": 2.0302349354029998e-05,
+        "partial_unexpected_counts": [
+          {
+            "value": 9,
+            "count": 1
+          },
+          {
+            "value": 208,
+            "count": 1
+          },
+          {
+            "value": 255,
+            "count": 1
+          }
+        ],
+        "partial_unexpected_index_list": [
+          1261636,
+          9702610,
+          12308722
+        ]
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_values_to_not_be_null",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "passenger_count"
+        },
+        "meta": {
+          "quality_score": 2,
+          "label": "missing_passenger_count"
+        },
+        "description": "Passenger count should be present.",
+        "severity": "critical"
+      },
+      "result": {
+        "element_count": 14776615,
+        "unexpected_count": 0,
+        "unexpected_percent": 0.0,
+        "partial_unexpected_list": [],
+        "partial_unexpected_counts": [],
+        "partial_unexpected_index_list": []
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_values_to_be_of_type",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "passenger_count",
+          "type_": "int64"
+        },
+        "meta": {
+          "quality_score": 1,
+          "label": "passenger_count_type_int"
+        },
+        "description": "Passenger count stored as integer.",
+        "severity": "critical"
+      },
+      "result": {
+        "observed_value": "int64"
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_values_to_be_between",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "trip_time_in_secs",
+          "min_value": 0.0,
+          "max_value": 28800.0
+        },
+        "meta": {
+          "quality_score": 3,
+          "label": "trip_duration_reasonable_range"
+        },
+        "description": "Trip duration should be non-negative and under 8 hours.",
+        "severity": "critical"
+      },
+      "result": {
+        "element_count": 14776615,
+        "unexpected_count": 0,
+        "unexpected_percent": 0.0,
+        "partial_unexpected_list": [],
+        "missing_count": 0,
+        "missing_percent": 0.0,
+        "unexpected_percent_total": 0.0,
+        "unexpected_percent_nonmissing": 0.0,
+        "partial_unexpected_counts": [],
+        "partial_unexpected_index_list": []
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_values_to_not_be_null",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "trip_time_in_secs"
+        },
+        "meta": {
+          "quality_score": 3,
+          "label": "missing_trip_duration"
+        },
+        "description": "Trip duration should be present.",
+        "severity": "critical"
+      },
+      "result": {
+        "element_count": 14776615,
+        "unexpected_count": 0,
+        "unexpected_percent": 0.0,
+        "partial_unexpected_list": [],
+        "partial_unexpected_counts": [],
+        "partial_unexpected_index_list": []
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_values_to_be_of_type",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "trip_time_in_secs",
+          "type_": "int64"
+        },
+        "meta": {
+          "quality_score": 1,
+          "label": "trip_duration_type_int"
+        },
+        "description": "Trip time stored as integer seconds.",
+        "severity": "critical"
+      },
+      "result": {
+        "observed_value": "int64"
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_values_to_be_between",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "trip_time_in_secs",
+          "min_value": 0.0
+        },
+        "meta": {
+          "quality_score": 3,
+          "label": "trip_duration_non_negative"
+        },
+        "description": "No negative durations.",
+        "severity": "critical"
+      },
+      "result": {
+        "element_count": 14776615,
+        "unexpected_count": 0,
+        "unexpected_percent": 0.0,
+        "partial_unexpected_list": [],
+        "missing_count": 0,
+        "missing_percent": 0.0,
+        "unexpected_percent_total": 0.0,
+        "unexpected_percent_nonmissing": 0.0,
+        "partial_unexpected_counts": [],
+        "partial_unexpected_index_list": []
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_values_to_be_between",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "trip_distance",
+          "min_value": 0.0,
+          "max_value": 100.0
+        },
+        "meta": {
+          "quality_score": 3,
+          "label": "trip_distance_reasonable_range"
+        },
+        "description": "Trip distance in miles; negative or extreme values are invalid.",
+        "severity": "critical"
+      },
+      "result": {
+        "element_count": 14776615,
+        "unexpected_count": 0,
+        "unexpected_percent": 0.0,
+        "partial_unexpected_list": [],
+        "missing_count": 0,
+        "missing_percent": 0.0,
+        "unexpected_percent_total": 0.0,
+        "unexpected_percent_nonmissing": 0.0,
+        "partial_unexpected_counts": [],
+        "partial_unexpected_index_list": []
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_values_to_not_be_null",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "trip_distance"
+        },
+        "meta": {
+          "quality_score": 3,
+          "label": "missing_trip_distance"
+        },
+        "description": "Trip distance should be present.",
+        "severity": "critical"
+      },
+      "result": {
+        "element_count": 14776615,
+        "unexpected_count": 0,
+        "unexpected_percent": 0.0,
+        "partial_unexpected_list": [],
+        "partial_unexpected_counts": [],
+        "partial_unexpected_index_list": []
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_values_to_be_of_type",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "trip_distance",
+          "type_": "float64"
+        },
+        "meta": {
+          "quality_score": 1,
+          "label": "trip_distance_type_float"
+        },
+        "description": "Trip distance stored as float miles.",
+        "severity": "critical"
+      },
+      "result": {
+        "observed_value": "float64"
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_values_to_be_between",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "trip_distance",
+          "min_value": 0.0
+        },
+        "meta": {
+          "quality_score": 3,
+          "label": "trip_distance_non_negative"
+        },
+        "description": "No negative distances.",
+        "severity": "critical"
+      },
+      "result": {
+        "element_count": 14776615,
+        "unexpected_count": 0,
+        "unexpected_percent": 0.0,
+        "partial_unexpected_list": [],
+        "missing_count": 0,
+        "missing_percent": 0.0,
+        "unexpected_percent_total": 0.0,
+        "unexpected_percent_nonmissing": 0.0,
+        "partial_unexpected_counts": [],
+        "partial_unexpected_index_list": []
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_values_to_not_be_null",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "pickup_longitude"
+        },
+        "meta": {
+          "quality_score": 2,
+          "label": "missing_pickup_longitude"
+        },
+        "description": "Pickup longitude should be present.",
+        "severity": "critical"
+      },
+      "result": {
+        "element_count": 14776615,
+        "unexpected_count": 0,
+        "unexpected_percent": 0.0,
+        "partial_unexpected_list": [],
+        "partial_unexpected_counts": [],
+        "partial_unexpected_index_list": []
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_values_to_be_between",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "pickup_longitude",
+          "mostly": 0.98,
+          "min_value": -74.3,
+          "max_value": -73.6
+        },
+        "meta": {
+          "quality_score": 2,
+          "label": "pickup_longitude_geo_bounds"
+        },
+        "description": "NYC-area longitude range; allow small fraction outside for nearby trips or GPS noise.",
+        "severity": "critical"
+      },
+      "result": {
+        "element_count": 14776615,
+        "unexpected_count": 270214,
+        "unexpected_percent": 1.828659676116621,
+        "partial_unexpected_list": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "missing_count": 0,
+        "missing_percent": 0.0,
+        "unexpected_percent_total": 1.828659676116621,
+        "unexpected_percent_nonmissing": 1.828659676116621,
+        "partial_unexpected_counts": [
+          {
+            "value": 0.0,
+            "count": 20
+          }
+        ],
+        "partial_unexpected_index_list": [
+          73,
+          95,
+          99,
+          100,
+          199,
+          284,
+          370,
+          389,
+          413,
+          453,
+          458,
+          473,
+          560,
+          622,
+          762,
+          848,
+          859,
+          899,
+          956,
+          1059
+        ]
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_values_to_be_of_type",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "pickup_longitude",
+          "type_": "float64"
+        },
+        "meta": {
+          "quality_score": 1,
+          "label": "pickup_longitude_type_float"
+        },
+        "description": "Longitude stored as float.",
+        "severity": "critical"
+      },
+      "result": {
+        "observed_value": "float64"
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_values_to_not_be_null",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "pickup_latitude"
+        },
+        "meta": {
+          "quality_score": 2,
+          "label": "missing_pickup_latitude"
+        },
+        "description": "Pickup latitude should be present.",
+        "severity": "critical"
+      },
+      "result": {
+        "element_count": 14776615,
+        "unexpected_count": 0,
+        "unexpected_percent": 0.0,
+        "partial_unexpected_list": [],
+        "partial_unexpected_counts": [],
+        "partial_unexpected_index_list": []
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_values_to_be_between",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "pickup_latitude",
+          "mostly": 0.98,
+          "min_value": 40.4,
+          "max_value": 41.0
+        },
+        "meta": {
+          "quality_score": 2,
+          "label": "pickup_latitude_geo_bounds"
+        },
+        "description": "NYC-area latitude range; allow small fraction outside for nearby trips or GPS noise.",
+        "severity": "critical"
+      },
+      "result": {
+        "element_count": 14776615,
+        "unexpected_count": 267214,
+        "unexpected_percent": 1.8083573267625905,
+        "partial_unexpected_list": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "missing_count": 0,
+        "missing_percent": 0.0,
+        "unexpected_percent_total": 1.8083573267625905,
+        "unexpected_percent_nonmissing": 1.8083573267625905,
+        "partial_unexpected_counts": [
+          {
+            "value": 0.0,
+            "count": 20
+          }
+        ],
+        "partial_unexpected_index_list": [
+          73,
+          95,
+          99,
+          100,
+          199,
+          284,
+          370,
+          389,
+          413,
+          453,
+          458,
+          473,
+          560,
+          622,
+          762,
+          848,
+          859,
+          899,
+          956,
+          1059
+        ]
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_values_to_be_of_type",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "pickup_latitude",
+          "type_": "float64"
+        },
+        "meta": {
+          "quality_score": 1,
+          "label": "pickup_latitude_type_float"
+        },
+        "description": "Latitude stored as float.",
+        "severity": "critical"
+      },
+      "result": {
+        "observed_value": "float64"
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": false,
+      "expectation_config": {
+        "type": "expect_column_values_to_not_be_null",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "dropoff_longitude"
+        },
+        "meta": {
+          "quality_score": 2,
+          "label": "missing_dropoff_longitude"
+        },
+        "description": "Dropoff longitude should be present.",
+        "severity": "critical"
+      },
+      "result": {
+        "element_count": 14776615,
+        "unexpected_count": 86,
+        "unexpected_percent": 0.0005820006814821933,
+        "partial_unexpected_list": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "partial_unexpected_counts": [
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          }
+        ],
+        "partial_unexpected_index_list": [
+          2212380,
+          2267795,
+          2300684,
+          2328873,
+          2398011,
+          2474963,
+          2603363,
+          2618312,
+          2862493,
+          2891958,
+          3107621,
+          3322978,
+          3324172,
+          3324217,
+          3358843,
+          3397503,
+          3399574,
+          3449964,
+          3480864,
+          3481491
+        ]
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_values_to_be_between",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "dropoff_longitude",
+          "mostly": 0.98,
+          "min_value": -74.3,
+          "max_value": -73.6
+        },
+        "meta": {
+          "quality_score": 2,
+          "label": "dropoff_longitude_geo_bounds"
+        },
+        "description": "NYC-area longitude range for dropoff.",
+        "severity": "critical"
+      },
+      "result": {
+        "element_count": 14776615,
+        "unexpected_count": 279554,
+        "unexpected_percent": 1.8918786678522406,
+        "partial_unexpected_list": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "missing_count": 86,
+        "missing_percent": 0.0005820006814821933,
+        "unexpected_percent_total": 1.8918676571055009,
+        "unexpected_percent_nonmissing": 1.8918786678522406,
+        "partial_unexpected_counts": [
+          {
+            "value": 0.0,
+            "count": 20
+          }
+        ],
+        "partial_unexpected_index_list": [
+          73,
+          95,
+          99,
+          100,
+          199,
+          284,
+          370,
+          389,
+          413,
+          453,
+          458,
+          473,
+          560,
+          622,
+          762,
+          848,
+          859,
+          899,
+          956,
+          1059
+        ]
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_values_to_be_of_type",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "dropoff_longitude",
+          "type_": "float64"
+        },
+        "meta": {
+          "quality_score": 1,
+          "label": "dropoff_longitude_type_float"
+        },
+        "description": "Longitude stored as float.",
+        "severity": "critical"
+      },
+      "result": {
+        "observed_value": "float64"
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": false,
+      "expectation_config": {
+        "type": "expect_column_values_to_not_be_null",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "dropoff_latitude"
+        },
+        "meta": {
+          "quality_score": 2,
+          "label": "missing_dropoff_latitude"
+        },
+        "description": "Dropoff latitude should be present.",
+        "severity": "critical"
+      },
+      "result": {
+        "element_count": 14776615,
+        "unexpected_count": 86,
+        "unexpected_percent": 0.0005820006814821933,
+        "partial_unexpected_list": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "partial_unexpected_counts": [
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          },
+          {
+            "value": null,
+            "count": 1
+          }
+        ],
+        "partial_unexpected_index_list": [
+          2212380,
+          2267795,
+          2300684,
+          2328873,
+          2398011,
+          2474963,
+          2603363,
+          2618312,
+          2862493,
+          2891958,
+          3107621,
+          3322978,
+          3324172,
+          3324217,
+          3358843,
+          3397503,
+          3399574,
+          3449964,
+          3480864,
+          3481491
+        ]
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_values_to_be_between",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "dropoff_latitude",
+          "mostly": 0.98,
+          "min_value": 40.4,
+          "max_value": 41.0
+        },
+        "meta": {
+          "quality_score": 2,
+          "label": "dropoff_latitude_geo_bounds"
+        },
+        "description": "NYC-area latitude range for dropoff.",
+        "severity": "critical"
+      },
+      "result": {
+        "element_count": 14776615,
+        "unexpected_count": 276235,
+        "unexpected_percent": 1.8694173712919995,
+        "partial_unexpected_list": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "missing_count": 86,
+        "missing_percent": 0.0005820006814821933,
+        "unexpected_percent_total": 1.8694064912701591,
+        "unexpected_percent_nonmissing": 1.8694173712919995,
+        "partial_unexpected_counts": [
+          {
+            "value": 0.0,
+            "count": 20
+          }
+        ],
+        "partial_unexpected_index_list": [
+          73,
+          95,
+          99,
+          100,
+          199,
+          284,
+          370,
+          389,
+          413,
+          453,
+          458,
+          473,
+          560,
+          622,
+          762,
+          848,
+          859,
+          899,
+          956,
+          1059
+        ]
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    },
+    {
+      "success": true,
+      "expectation_config": {
+        "type": "expect_column_values_to_be_of_type",
+        "kwargs": {
+          "batch_id": "nyc_taxi-nyc_taxi_data",
+          "column": "dropoff_latitude",
+          "type_": "float64"
+        },
+        "meta": {
+          "quality_score": 1,
+          "label": "dropoff_latitude_type_float"
+        },
+        "description": "Latitude stored as float.",
+        "severity": "critical"
+      },
+      "result": {
+        "observed_value": "float64"
+      },
+      "meta": {},
+      "exception_info": {
+        "raised_exception": false,
+        "exception_traceback": null,
+        "exception_message": null
+      }
+    }
+  ],
+  "suite_name": "trip_data_schema_raw_validation",
+  "suite_parameters": {},
+  "statistics": {
+    "evaluated_expectations": 36,
+    "successful_expectations": 29,
+    "unsuccessful_expectations": 7,
+    "success_percent": 80.55555555555556
+  },
+  "meta": {
+    "great_expectations_version": "1.8.0",
+    "batch_spec": {
+      "batch_data": "PandasDataFrame"
+    },
+    "batch_markers": {
+      "ge_load_time": "20251027T233107.998304Z"
+    },
+    "active_batch_definition": {
+      "datasource_name": "nyc_taxi",
+      "data_connector_name": "fluent",
+      "data_asset_name": "nyc_taxi_data",
+      "batch_identifiers": {
+        "dataframe": "<DATAFRAME>"
+      }
+    }
+  },
+  "id": null
+}

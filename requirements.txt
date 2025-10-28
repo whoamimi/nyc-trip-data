@@ -1,0 +1,11 @@
+# Data Manipulation and Visualization
+pandas>=1.3
+plotly>=5.0
+pyarrow>=4.0
+numpy<1.21
+# UI Dashboard
+dash
+
+great_expectations
+ydata-profiling
+ydata-profiling[notebook]

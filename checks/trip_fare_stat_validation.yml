@@ -1,0 +1,215 @@
+# trip_fare_schema_stat_validation.yml
+
+- expectation_type: ExpectColumnValuesToMatchStrftimeFormat
+  kwargs:
+    column: pickup_datetime
+    strftime_format: "%Y-%m-%d %H:%M:%S"
+  description: "Pickup timestamp must follow the standard ISO datetime format with second precision."
+  meta:
+    quality_score: 3
+    label: "pickup_datetime_format"
+
+- expectation_type: ExpectColumnValuesToBeBetween
+  kwargs:
+    column: fare_amount
+    min_value: 2.5
+    max_value: 500
+  description: "Fare amount must fall between the minimum fare ($2.50) and an upper bound of $500."
+  meta:
+    quality_score: 3
+    label: "fare_amount_reasonable_range"
+
+- expectation_type: ExpectColumnValuesToBeBetween
+  kwargs:
+    column: surcharge
+    min_value: 0
+    max_value: 12.5
+    strict_min: false
+  description: "Surcharge should be non-negative and rarely exceed $12.50 based on statistical max."
+  meta:
+    quality_score: 3
+    label: "surcharge_reasonable_range"
+
+- expectation_type: ExpectColumnValuesToBeBetween
+  kwargs:
+    column: mta_tax
+    min_value: 0.5
+    max_value: 0.5
+  description: "MTA tax is a fixed $0.50 per trip; any deviation likely indicates data issues."
+  meta:
+    quality_score: 3
+    label: "mta_tax_fixed_value"
+
+- expectation_type: ExpectColumnValuesToBeBetween
+  kwargs:
+    column: tip_amount
+    min_value: 0
+    max_value: 50
+    mostly: 0.99
+  description: "Tip amount should be non-negative; tips above $50 are considered extreme outliers."
+  meta:
+    quality_score: 3
+    label: "tip_amount_outlier_range"
+
+- expectation_type: ExpectColumnValuesToBeBetween
+  kwargs:
+    column: tolls_amount
+    min_value: 0
+    max_value: 20
+    strict_min: false
+  description: "Toll charges should be between $0 and $20; larger values may indicate aggregation errors."
+  meta:
+    quality_score: 3
+    label: "tolls_reasonable_range"
+
+- expectation_type: ExpectColumnValuesToBeBetween
+  kwargs:
+    column: total_amount
+    min_value: 2.5
+    max_value: 650
+  description: "Total fare should align with the observed range of $2.50–$650."
+  meta:
+    quality_score: 3
+    label: "total_amount_reasonable_range"
+
+- expectation_type: ExpectColumnPairValuesAToBeGreaterThanB
+  kwargs:
+    column_A: total_amount
+    column_B: fare_amount
+  description: "Total fare should be greater than or equal to base fare."
+  meta:
+    quality_score: 3
+    label: "total_vs_fare_consistency"
+
+- expectation_type: ExpectColumnValuesToBeOfType
+  kwargs:
+    column: fare_amount
+    type_: "float64"
+  description: "Fare amount should be stored as a float."
+  meta:
+    quality_score: 2
+    label: "fare_amount_type_float"
+
+- expectation_type: ExpectColumnValuesToBeOfType
+  kwargs:
+    column: total_amount
+    type_: "float64"
+  description: "Total amount should be stored as a float."
+  meta:
+    quality_score: 2
+    label: "total_amount_type_float"
+
+- expectation_type: ExpectColumnValuesToBeOfType
+  kwargs:
+    column: tip_amount
+    type_: "float64"
+  description: "Tip amount should be numeric."
+  meta:
+    quality_score: 2
+    label: "tip_amount_type_float"
+
+- expectation_type: ExpectColumnValuesToBeOfType
+  kwargs:
+    column: surcharge
+    type_: "float64"
+  description: "Surcharge should be numeric."
+  meta:
+    quality_score: 2
+    label: "surcharge_type_float"
+
+- expectation_type: ExpectColumnValuesToBeOfType
+  kwargs:
+    column: mta_tax
+    type_: "float64"
+  description: "MTA tax should be numeric."
+  meta:
+    quality_score: 2
+    label: "mta_tax_type_float"
+
+- expectation_type: ExpectColumnValuesToBeOfType
+  kwargs:
+    column: tolls_amount
+    type_: "float64"
+  description: "Tolls amount should be numeric."
+  meta:
+    quality_score: 2
+    label: "tolls_type_float"
+
+- expectation_type: ExpectColumnValuesToBeOfType
+  kwargs:
+    column: total_amount
+    type_: "float64"
+  description: "Total amount should be numeric."
+  meta:
+    quality_score: 2
+    label: "total_amount_type_float"
+
+- expectation_type: ExpectColumnValuesToBeBetween
+  kwargs:
+    column: fare_amount
+    min_value: 0
+    strict_min: false
+  description: "Fare amount cannot be negative."
+  meta:
+    quality_score: 3
+    label: "fare_amount_non_negative"
+
+- expectation_type: ExpectColumnValuesToBeBetween
+  kwargs:
+    column: surcharge
+    min_value: 0
+    strict_min: false
+  description: "Surcharge cannot be negative."
+  meta:
+    quality_score: 3
+    label: "surcharge_non_negative"
+
+- expectation_type: ExpectColumnValuesToBeBetween
+  kwargs:
+    column: tip_amount
+    min_value: 0
+    strict_min: false
+  description: "Tip amount cannot be negative."
+  meta:
+    quality_score: 3
+    label: "tip_amount_non_negative"
+
+- expectation_type: ExpectColumnValuesToBeBetween
+  kwargs:
+    column: tolls_amount
+    min_value: 0
+    strict_min: false
+  description: "Tolls amount cannot be negative."
+  meta:
+    quality_score: 3
+    label: "tolls_non_negative"
+
+- expectation_type: ExpectColumnValuesToBeBetween
+  kwargs:
+    column: total_amount
+    min_value: 0
+    strict_min: false
+  description: "Total fare cannot be negative."
+  meta:
+    quality_score: 3
+    label: "total_amount_non_negative"
+
+- expectation_type: ExpectColumnQuantileValuesToBeBetween
+  kwargs:
+    column: fare_amount
+    quantile_ranges:
+      quantiles: [0.25, 0.5, 0.75]
+      value_ranges: [[6, 7], [8, 10], [12, 14]]
+  description: "Fare distribution should maintain roughly the same quartile structure (6–14 USD)."
+  meta:
+    quality_score: 2
+    label: "fare_distribution_stability"
+
+- expectation_type: ExpectColumnPairValuesToBeEqual
+  kwargs:
+    column_A: total_amount
+    column_B: fare_amount_plus_components
+  description: "Total fare should approximately equal the sum of fare, surcharge, tax, tip, and tolls."
+  meta:
+    quality_score: 3
+    label: "total_amount_composition_check"
